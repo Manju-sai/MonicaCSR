@@ -1,0 +1,81 @@
+{% include 'userheader.html' %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+</head>
+<body>
+{% block content %}
+  <!-- contact section -->
+  <section class="contact_section layout_padding-top">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-lg-4 col-md-5 offset-md-1">
+          <div class="heading_container">
+            <h2>
+              User Add Events Page
+            </h2>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-4 col-md-5 offset-md-1">
+          <div class="form_container">
+            {{msg}}
+            <form action="/useraddevents" method="post">
+              <div>
+                <input type="text" placeholder="Event Name" name="ename" required/>
+              </div>
+              <div>
+                <!--<input type="text" placeholder="Last Name" name="lname"/>-->
+                <select name="etype" style="width:410px; height:30px;">
+                  {% for x in events %}
+                  <option>{{x}}</option>
+                  {% endfor %}
+                </select>
+              </div>
+              <div>
+                <br>
+                <!--<input type="text" placeholder="Last Name" name="lname"/>-->
+                <select name="location" style="width:410px; height:30px;">
+                  {% for x in locations %}
+                  <option>{{x}}</option>
+                  {% endfor %}
+                </select>
+              </div>
+              <div>
+                <br>
+                <input type="email" placeholder="Contact Email Id" name="email" required/>
+              </div>
+              <div>
+                <input type="text" placeholder="Contact Phone Number" name="phnum" pattern="[0-9]{10}"
+                maxlength="10"  required/>
+              </div>
+              <div>
+                <input type="date" placeholder="Event Date" name="edate" required
+                min="{{current_date}}"/>
+              </div>
+              <div>
+                <textarea name="description" placeholder="Description" rows="5" cols="45"  required>
+                </textarea>
+              </div>
+              <div class="btn_box">
+                <br>
+                <input type="submit" value="New Event">
+              </div>
+            </form>
+          </div>
+        </div>
+        <!--<div class="col-lg-7 col-md-6 px-0">
+          <div class="map_container">
+            <div class="map">
+              <div id="googleMap"></div>
+            </div>
+          </div>
+        </div>-->
+      </div>
+    </div>
+  </section>
+  <!-- end contact section -->
+{% endblock %}
+</body>
+</html>
